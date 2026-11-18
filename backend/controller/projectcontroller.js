@@ -3,19 +3,33 @@ const Project = require("../models/project");
 const Task = require("../models/task");
 
 // Create a project
+
 const createProject = async (req, res) => {
     try {
         const { name, description } = req.body;
 
-        if (!name) {
+        if (!name || typeof name !== "string" || !name.trim()) {
             return res.status(400).json({
                 message: "Project name is required"
             });
         }
 
+        if (name.trim().length > 100) {
+            return res.status(400).json({
+                message: "Project name cannot exceed 100 characters"
+            });
+        }
+
+        if (description !== undefined &&
+            (typeof description !== "string" || description.trim().length > 500)) {
+            return res.status(400).json({
+                message: "Description cannot exceed 500 characters"
+            });
+        }
+
         const project = await Project.create({
-            name,
-            description,
+            name: name.trim(),
+            description: description ? description.trim() : "",
             owner: req.user.id,
             members: [req.user.id]
         });
@@ -26,9 +40,18 @@ const createProject = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        if (error.name === "ValidationError") {
+            return res.status(400).json({
+                message: error.message
+            });
+        }
+
+        res.status(500).json({
+            message: "Server error while creating project"
+        });
     }
 };
+
 
 // Get projects of logged-in user
 const getMyProjects = async (req, res) => {
@@ -60,24 +83,49 @@ const updateProject = async (req, res) => {
             });
         }
 
-        if (!name || !name.trim()) {
+        // Name validation
+        if (typeof name !== "string" || !name.trim()) {
             return res.status(400).json({
                 message: "Project name is required"
             });
         }
 
+        if (name.trim().length > 100) {
+            return res.status(400).json({
+                message: "Project name cannot exceed 100 characters"
+            });
+        }
+
+        // Description validation
+        if (description !== undefined &&
+            (typeof description !== "string" || description.trim().length > 500)) {
+            return res.status(400).json({
+                message: "Description cannot exceed 500 characters"
+            });
+        }
+
         project.name = name.trim();
-        project.description = description || "";
+        project.description = description ? description.trim() : "";
 
         await project.save();
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Project updated successfully",
             project
         });
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Update project error:", error);
+
+        if (error.name === "ValidationError") {
+            return res.status(400).json({
+                message: error.message
+            });
+        }
+
+        return res.status(500).json({
+            message: "Server error while updating project"
+        });
     }
 };
 

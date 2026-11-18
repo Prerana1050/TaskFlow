@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
@@ -10,6 +11,8 @@ function Register() {
     });
 
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -17,28 +20,72 @@ function Register() {
             ...formData,
             [e.target.name]: e.target.value
         });
+        setError("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
 
+        const name = formData.name.trim();
+        const email = formData.email.trim();
+        const password = formData.password;
+
+        if (name.length < 2) {
+            setError("Name must contain at least 2 characters.");
+            return;
+        }
+
+        if (!email.toLowerCase().endsWith("@gmail.com")) {
+            setError("Please enter a valid Gmail address.");
+            return;
+        }
+
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
+            return;
+        }
+
         try {
-            await API.post("/auth/register", formData);
+            setLoading(true);
+
+            await API.post("/auth/register", {
+                name,
+                email,
+                password
+            });
+
             alert("Registration successful! Please login.");
             navigate("/login");
+
         } catch (err) {
-            setError(err.response?.data?.message || "Registration failed");
+            setError(
+                err.response?.data?.message ||
+                "Registration failed. Please try again."
+            );
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="container d-flex justify-content-center align-items-center min-vh-100">
-            <div className="card shadow p-4" style={{ width: "400px" }}>
-                <h2 className="text-center text-primary fw-bold">TaskFlow</h2>
-                <p className="text-center text-muted">Create your account</p>
+            <div className="card shadow p-4 w-100" style={{ maxWidth: "400px" }}>
 
-                {error && <div className="alert alert-danger">{error}</div>}
+                <h2 className="text-center fw-bold"
+                style={{ color: "#714B67" }}>
+                    TaskFlow
+                </h2>
+
+                <p className="text-center text-muted">
+                    Create your account
+                </p>
+
+                {error && (
+                    <div className="alert alert-danger">
+                        {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -49,6 +96,7 @@ function Register() {
                             className="form-control"
                             value={formData.name}
                             onChange={handleChange}
+                            maxLength={100}
                             required
                         />
                     </div>
@@ -73,18 +121,29 @@ function Register() {
                             className="form-control"
                             value={formData.password}
                             onChange={handleChange}
+                            minLength={6}
                             required
                         />
                     </div>
 
-                    <button className="btn btn-primary w-100">
-                        Register
+                    <button
+                        type="submit"
+                        className="btn w-100"
+                        disabled={loading}
+                        style={{
+        backgroundColor: "#714B67",
+        borderColor: "#714B67",
+        color: "#FFFFFF"
+    }}
+                    >
+                        {loading ? "Registering..." : "Register"}
                     </button>
                 </form>
 
                 <p className="text-center mt-3 mb-0">
                     Already have an account? <Link to="/login">Login</Link>
                 </p>
+
             </div>
         </div>
     );

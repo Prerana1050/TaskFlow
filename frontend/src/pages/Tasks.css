@@ -1,0 +1,162 @@
+
+.tasks-page {
+    background: #F5F3F5;
+    min-height: 100vh;
+    color: #343039;
+}
+
+.tasks-navbar {
+    background: #714B67 !important;
+    padding: 14px 5%;
+}
+
+.tasks-navbar .navbar-brand {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.tasks-navbar .btn {
+    border-radius: 7px;
+}
+
+.tasks-content {
+    max-width: 1200px;
+}
+
+.tasks-heading {
+    color: #343039;
+    font-weight: 700;
+}
+
+.tasks-subtitle {
+    color: #817A83;
+}
+
+.tasks-panel {
+    background: #FFFFFF;
+    border: 1px solid #E7E1E6;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(52, 48, 57, 0.05);
+}
+
+.tasks-panel .card-body {
+    padding: 24px;
+}
+
+.tasks-panel h5 {
+    font-weight: 700;
+    color: #58394F;
+}
+
+/* Black borders for inputs, dropdowns and textareas */
+.tasks-page .form-control,
+.tasks-page .form-select {
+    border: 1.5px solid #000000;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+
+.tasks-page .form-control:focus,
+.tasks-page .form-select:focus {
+    border: 1.5px solid #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.tasks-page .form-label {
+    font-weight: 600;
+    color: #343039;
+}
+
+.task-submit-btn {
+    background: #714B67 !important;
+    border: 1px solid #714B67 !important;
+    color: #FFFFFF !important;
+    border-radius: 7px;
+    padding: 9px 20px;
+}
+
+.task-submit-btn:hover {
+    background: #58394F !important;
+}
+
+.task-cancel-btn {
+    border-radius: 7px;
+}
+
+.task-card {
+    background: #FFFFFF;
+    border: 1px solid #D8CBD5;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(52, 48, 57, 0.05);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 16px rgba(113, 75, 103, 0.12);
+}
+
+.task-card .card-title {
+    font-weight: 700;
+    color: #343039;
+    overflow-wrap: anywhere;
+}
+
+.task-card p {
+    overflow-wrap: anywhere;
+}
+
+.tasks-section-heading {
+    font-weight: 700;
+    color: #58394F;
+}
+
+.tasks-back-btn {
+    color: #714B67 !important;
+    font-weight: 600;
+}
+
+.tasks-clear-btn {
+    border-radius: 7px;
+}
+
+.tasks-empty {
+    background: #FFFFFF;
+    border: 1px solid #D8CBD5;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.tasks-page .alert {
+    border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+    .tasks-navbar {
+        padding: 12px;
+    }
+
+    .tasks-navbar .navbar-brand {
+        font-size: 18px;
+    }
+
+    .tasks-navbar .btn {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    .tasks-content {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .tasks-panel .card-body {
+        padding: 17px;
+    }
+
+    .task-card .card-body {
+        padding: 17px;
+    }
+}

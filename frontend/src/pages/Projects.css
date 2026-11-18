@@ -1,0 +1,265 @@
+
+.projects-page {
+    min-height: 100vh;
+    background: var(--bg);
+}
+
+.projects-navbar {
+    background: #714B67;
+    padding: 15px 0;
+}
+
+.projects-brand {
+    color: #fff !important;
+    font-size: 23px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.projects-nav-btn {
+    border: 1px solid rgba(255,255,255,.8);
+    background: transparent;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.projects-nav-btn:hover {
+    background: #fff;
+    color: #714B67;
+}
+
+.projects-logout-btn {
+    border: 1px solid #E97845;
+    background: #E97845;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.projects-logout-btn:hover {
+    background: #D96536;
+    border-color: #D96536;
+}
+
+.projects-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.projects-heading {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-h);
+    margin-bottom: 5px;
+}
+
+.projects-subtitle {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.projects-panel {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.projects-panel-title {
+    font-size: 19px;
+    font-weight: 650;
+    color: var(--text-h);
+    margin-bottom: 20px;
+}
+
+.projects-form label {
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 7px;
+}
+
+.projects-form .form-control {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.projects-form .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(113,75,103,.12);
+}
+
+.project-submit-btn {
+    background: #714B67;
+    border: 1px solid #714B67;
+    color: #fff;
+    border-radius: 8px;
+    padding: 9px 18px;
+}
+
+.project-submit-btn:hover {
+    background: #58394F;
+    color: #fff;
+}
+
+.project-cancel-btn {
+    background: #817A83;
+    border: 1px solid #817A83;
+    color: #fff;
+    border-radius: 8px;
+    padding: 9px 18px;
+}
+
+.project-cancel-btn:hover {
+    background: #68616A;
+    color: #fff;
+}
+
+.projects-list-heading {
+    font-size: 19px;
+    font-weight: 650;
+    color: var(--text-h);
+    margin-bottom: 18px;
+}
+
+.project-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    height: 100%;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(52,48,57,.1);
+}
+
+.project-card-body {
+    padding: 22px;
+}
+
+.project-card-title {
+    font-size: 18px;
+    font-weight: 650;
+    color: var(--primary);
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.project-card-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.project-actions {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-manage-btn {
+    background: #714B67;
+    border: 1px solid #714B67;
+    color: #fff;
+}
+
+.project-manage-btn:hover {
+    background: #58394F;
+    color: #fff;
+}
+
+.project-edit-btn {
+    background: #FBEDE6;
+    border: 1px solid #E97845;
+    color: #B9562E;
+}
+
+.project-edit-btn:hover {
+    background: #E97845;
+    color: #fff;
+}
+
+.project-delete-btn {
+    background: #fff;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+.project-delete-btn:hover {
+    background: var(--danger);
+    color: #fff;
+}
+
+.project-empty {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 35px 20px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.projects-alert {
+    border-radius: 8px;
+}
+.projects-form input,
+.projects-form textarea {
+    border: 1.5px solid #000000;
+    border-radius: 8px;
+    padding: 11px 14px;
+    background-color: #FFFFFF;
+    outline: none;
+    box-shadow: none;
+}
+
+.projects-form input:focus,
+.projects-form textarea:focus {
+    border: 1.5px solid #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 576px) {
+    .projects-navbar {
+        padding: 12px 0;
+    }
+
+    .projects-brand {
+        font-size: 20px;
+    }
+
+    .projects-nav-btn,
+    .projects-logout-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .projects-content {
+        padding: 25px 15px;
+    }
+
+    .projects-heading {
+        font-size: 24px;
+    }
+
+    .projects-panel {
+        padding: 18px 14px;
+    }
+
+    .project-card-body {
+        padding: 18px;
+    }
+
+    .project-actions button {
+        flex: 1;
+    }
+}
